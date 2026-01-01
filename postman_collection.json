@@ -1,0 +1,150 @@
+{
+  "info": {
+    "name": "Spy Cat Agency API",
+    "description": "Complete API collection for Spy Cat Agency management system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Spy Cats",
+      "item": [
+        {
+          "name": "Create Spy Cat",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Whiskers\",\n  \"years_of_experience\": 5,\n  \"breed\": \"Siamese\",\n  \"salary\": 50000\n}"
+            },
+            "url": {"raw": "http://localhost:8000/cats", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["cats"]}
+          }
+        },
+        {
+          "name": "List All Cats",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8000/cats", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["cats"]}
+          }
+        },
+        {
+          "name": "Get Single Cat",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8000/cats/{{cat_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["cats", "{{cat_id}}"]}
+          }
+        },
+        {
+          "name": "Update Cat Salary",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"salary\": 60000\n}"
+            },
+            "url": {"raw": "http://localhost:8000/cats/{{cat_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["cats", "{{cat_id}}"]}
+          }
+        },
+        {
+          "name": "Delete Cat",
+          "request": {
+            "method": "DELETE",
+            "url": {"raw": "http://localhost:8000/cats/{{cat_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["cats", "{{cat_id}}"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Missions",
+      "item": [
+        {
+          "name": "Create Mission",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"targets\": [\n    {\n      \"name\": \"Target Alpha\",\n      \"country\": \"USA\",\n      \"notes\": \"High priority target\"\n    },\n    {\n      \"name\": \"Target Beta\",\n      \"country\": \"UK\",\n      \"notes\": \"Medium priority\"\n    }\n  ]\n}"
+            },
+            "url": {"raw": "http://localhost:8000/missions", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions"]}
+          }
+        },
+        {
+          "name": "List All Missions",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8000/missions", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions"]}
+          }
+        },
+        {
+          "name": "Get Single Mission",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8000/missions/{{mission_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions", "{{mission_id}}"]}
+          }
+        },
+        {
+          "name": "Assign Cat to Mission",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cat_id\": \"{{cat_id}}\"\n}"
+            },
+            "url": {"raw": "http://localhost:8000/missions/{{mission_id}}/assign", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions", "{{mission_id}}", "assign"]}
+          }
+        },
+        {
+          "name": "Update Target Notes",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"Updated intelligence gathered\"\n}"
+            },
+            "url": {"raw": "http://localhost:8000/missions/{{mission_id}}/targets/{{target_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions", "{{mission_id}}", "targets", "{{target_id}}"]}
+          }
+        },
+        {
+          "name": "Mark Target Complete",
+          "request": {
+            "method": "PATCH",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"complete\": true\n}"
+            },
+            "url": {"raw": "http://localhost:8000/missions/{{mission_id}}/targets/{{target_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions", "{{mission_id}}", "targets", "{{target_id}}"]}
+          }
+        },
+        {
+          "name": "Delete Mission",
+          "request": {
+            "method": "DELETE",
+            "url": {"raw": "http://localhost:8000/missions/{{mission_id}}", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["missions", "{{mission_id}}"]}
+          }
+        }
+      ]
+    },
+    {
+      "name": "Utility",
+      "item": [
+        {
+          "name": "Get Valid Breeds",
+          "request": {
+            "method": "GET",
+            "url": {"raw": "http://localhost:8000/breeds", "protocol": "http", "host": ["localhost"], "port": "8000", "path": ["breeds"]}
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {"key": "cat_id", "value": "", "type": "string"},
+    {"key": "mission_id", "value": "", "type": "string"},
+    {"key": "target_id", "value": "", "type": "string"}
+  ]
+}
