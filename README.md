@@ -13,7 +13,7 @@ A RESTful API for managing spy cats, missions, and targets for the Spy Cat Agenc
 
 1. Clone the repository:
 ```bash
-git clone 
+git clone https://github.com/Misha4231/spy-cat-assignment-backend.git
 cd spy-cat-backend
 ```
 
